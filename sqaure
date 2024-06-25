@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+#include <math.h>
+
+
+
+double mysqrt(double r)
+
+{
+
+   double x , oldx ;
+
+
+
+   if ( r < 0 )
+
+      return 0. ;
+
+   x = -r ;
+
+   for ( ; ; )
+
+   {
+
+      oldx = x ;
+
+      x = ( x*x + r ) / 2. / x ;
+
+      printf("%.5f %.5f\n", x, oldx ) ;
+
+      if ( fabs( oldx -  x ) < 0.000000000000000001 )
+
+         break ;
+
+   }
+
+   return x ;
+
+}
+
+
+
+main()
+
+{
+
+   printf("sqrt(%.5f ) = %.20f sqrt()=%.20f\n", 2., mysqrt(2.), sqrt(2.) ) ;
+
+}
