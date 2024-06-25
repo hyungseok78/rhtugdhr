@@ -1,0 +1,46 @@
+#microprocessor
+
+#include<stdio.h>
+
+main(){   int* x;     *x = 3;      printf("%d %d %d\n", *x, &x, x);}
+
+void main(){   int a=3;   *(&a) = 4;    printf("%d", a);  }
+
+void swap(long long x, long long y)
+
+{
+
+long long t;
+
+t = *((long long *)x);
+
+*((long long*)x) = *((long long*)y);
+
+*((long long*)y) = t;
+
+}
+
+void main()
+
+{
+
+long long a = 1, b = 2;
+
+long long c, d;
+
+int* e;
+
+
+
+c = (long long) &a;
+
+d = (long long) &b;
+
+
+
+swap(c,d);
+
+printf("cd: %ld %ld\n", a, b);
+
+}
+
