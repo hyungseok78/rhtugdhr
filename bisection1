@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+#include <math.h>
+
+double func(double x)
+
+{
+
+   return ( x - 2. *   sin(x) ) ;
+
+}
+
+/* #define myfabs((x))   ((((x)>0.)?(x):(-(x)))) */
+
+main()
+
+{
+
+   double a = 1.57 , b = 10.0 , c ;
+
+   int i = 0 ;
+
+   if ( func(a) * func(b) > 0.0 )
+
+   {
+
+      printf("wrong interval\n") ;
+
+      return ;
+
+   }
+
+   for ( ;;i++ )
+
+   {
+
+      c = (a+b)/2.0 ;
+
+      if ( fabs(b-a) < 0.05 && fabs( func(c) ) <= 0.01  )
+
+         break ;
+
+
+
+      if ( func(a) * func(c) > 0.0 )
+
+         a = c ;
+
+
+
+      else
+
+         b = c ;
+
+      printf("%d intermediate computation %.5f\n", i, c) ;
+
+   }
+
+   printf("%d answer %.5f\n", i, c) ;
+
+}
