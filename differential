@@ -1,0 +1,66 @@
+#include <math.h>
+
+
+
+float func(float x) //코드 작성 자체가 답이 아니라 수업시간에 설명한 방식으로 제약으로 인해 컴 계산 결과가 일반 수학과 달리 나온다는 것 풀면 되는 문제였음.
+
+{
+
+   return x * x ;
+
+}
+
+
+
+float diff1(float x , float h)
+
+{
+
+  float diff ;
+
+  diff = (func(x+h) - func(x))/h ;
+
+  return diff ;
+
+}
+
+
+
+float diff2(float x, float h)
+
+{
+
+  float diff ;
+
+  diff = (func(x+h) - func(x-h))/2.0/h ;
+
+  return diff ;
+
+}
+
+
+
+main()
+
+{
+
+   float h = pow(2.0,-32) ;
+
+   printf("diff1 = %.35f\n", diff1(1.0, h) ) ;
+
+   printf("diff2 = %.35f\n", diff2(1.0, h) ) ;
+
+   h = pow(2., -23) ;
+
+   printf("diff1 = %.35f\n", diff1(1.0, h) ) ;
+
+   printf("diff2 = %.35f\n", diff2(1.0, h) ) ;
+
+   h = pow(2., -8) ;
+
+   printf("diff1 = %.35f\n", diff1(1.0, h) ) ;
+
+   printf("diff2 = %.35f\n", diff2(1.0, h) ) ;
+
+}
+
