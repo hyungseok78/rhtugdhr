@@ -1,0 +1,32 @@
+int 	key, ST=0, key_pressed ; // key_pressed는 키가 눌러진 경우 1 아니면 0으로 설정
+sbit 	unlock   P0^0;
+enum 	STATE {   SX,   S0,   S01,   S011     }   ST;
+
+  void interrupt ISR0() interrupt 1 {   key=0; key_pressed=1;   }       // isr: key, key_pressed설정
+   void interrupt ISR1() interrupt 3 {   key=0; key_pressed=1;   }       // 위와 동일
+
+void main() { 
+        P3=0xff;                                   // input mode
+       IE=85;                                     // 인터럽트 레지스터 설정
+   while (1)                { // 무한루프 시작
+        if (key_pressed == 1)      {    // 만약 키가 눌러진 경우
+         // 아래쪽에는 state transition diagram을 switch문으로 구현하고 
+         // conditional assignment을 사용할 것..
+switch (ST) { 
+case SX: 
+ST=(key==0)? S0: SX; 
+unlock = 0;
+break; 
+case S0: 
+ST=(key==0)? S01: SX; 
+unlock = 0;
+break; 
+	   case S01:
+		ST=(key==0)? S011: SX; 
+                unlock = 1;
+		break;
+	}  // switch 문 괄호
+        key_pressed = 0;           //  다음 키를 받을 준비를 함.. 
+} // 만약 key 눌러졌다면에 해당하는 괄호
+} // 무한루프 괄호
+} // main 함수 괄호
