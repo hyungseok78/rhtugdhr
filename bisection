@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+#include <math.h>
+
+double func(double x)
+
+{
+
+    return (x * x - 4.0);
+
+}
+
+main()
+
+{
+
+    double a = 4., b = 1.8, c;
+
+    int i = 1;
+
+    if (func(a) * func(b) > 0.0)
+
+    {
+
+        printf("BAD interval\n"); return;
+
+    }
+
+    for (; ; i++)
+
+    {
+
+        c = (a + b) / 2.0;
+
+        if (func(a) * func(c) > 0.0)
+
+            a = c;
+
+        else
+
+            b = c;
+
+        printf("%d answer %.5f\n", i, c);
+
+         if (fabs(b - a) < 0.00005)
+
+            break;
+
+    }
+
+}
