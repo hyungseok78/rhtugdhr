@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+#include <math.h>
+
+
+
+// x*x -x -2 = 0
+
+// x = g(x) = - sqrt(x+2)
+
+// x = g(x) = + sqrt(x+2)
+
+// -1.5 <= x <= 0
+
+double func(double x)
+
+{
+
+   //return sqrt(x+2) ;
+
+   //return sqrt(x+2) ;
+
+   return x*x-2. ;
+
+}
+
+
+
+main()
+
+{
+
+   double xn = 2.00001, oldxn ;
+
+   int i = 0 ;
+
+
+
+   for ( ;;i++ )
+
+   {
+
+          oldxn = xn ;
+
+      xn = func(xn) ;
+
+      //if ( fabs( func(xn) ) < 0.00001 )
+
+      if ( fabs( xn - oldxn ) < 0.0000001 )
+
+         break ;
+
+      printf("%d answer %.5f\n", i, xn) ;
+
+   }
+
+}
+
